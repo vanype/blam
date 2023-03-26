@@ -64,14 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CamMovie.cs" />
-    <Compile Include="Assets\Inventory.cs" />
-    <Compile Include="Assets\InventorySlot.cs" />
-    <Compile Include="Assets\Item.cs" />
-    <Compile Include="Assets\PlayerHP.cs" />
-    <Compile Include="Assets\PlayerMovement.cs" />
-    <Compile Include="Assets\PlayerUI.cs" />
-    <Compile Include="Assets\TotalItems.cs" />
+    <Compile Include="Assets\Scripts\CamMovie.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\InventorySlot.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\PlayerHP.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerUI.cs" />
+    <Compile Include="Assets\Scripts\TotalItems.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
