@@ -7,17 +7,14 @@ public class InventorySlot : MonoBehaviour
 {
     private bool filled;
     private int index;
-    private int ID;
-    private Image itemImage;
+    private int ID = -1;
+    
 
     public void SetIndex(int i)
     {
         index = i;
     }
-    private void Start()
-    {
-        filled = false;
-    }
+    
     public bool GetFilledValue()
     {
         return filled;
@@ -27,5 +24,22 @@ public class InventorySlot : MonoBehaviour
         ID = _ID;
         filled = true;
         GetComponent<Image>().sprite = sprite;
+    }
+    public void OnClick()
+    {
+        if (filled)
+        {
+            //при нажатии обращается к общему списку всех айтемов, и их функций
+            GameObject player = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().GetPlayerObject();
+            GameObject.FindGameObjectWithTag("Total Items").GetComponent<TotalItems>().TryToDoAction(ID, player,this);
+           
+            
+        }
+    }
+    public void DeleteItem()
+    {
+        ID = -1;
+        filled = false;
+        GetComponent<Image>().sprite = default;
     }
 }

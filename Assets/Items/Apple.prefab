@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  haveAction: 1
 --- !u!95 &4755770861131247335
 Animator:
   serializedVersion: 3

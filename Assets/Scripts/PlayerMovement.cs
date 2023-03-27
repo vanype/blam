@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
     
-    Vector2 moveVector;
+    private Vector2 moveVector;
 
     private float vec_x;
     private float vec_y;

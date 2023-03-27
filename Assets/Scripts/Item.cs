@@ -4,18 +4,38 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private int ID;
+
+    //указывает на то, можно ли с предметом совершить действие, нажав на него в инвентаре 
+    [SerializeField] private bool haveAction;
+
     private IEnumerator cour;
-    [SerializeField]private int ID;
+    private bool canPick;
+    private Inventory inventory;
+    private ItemActions itemActions;
+
+    private void Start()
+    {
+        itemActions = GameObject.FindGameObjectWithTag("ItemActions").GetComponent<ItemActions>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+    }
+
 
     public int GetID()
     {
         return ID;
     }
-    
+
+    public bool GetActionHave()
+    {
+        return haveAction;
+    }
+
+
 
     /*
         содержит проблемную часть, которую нужно будет заменить
-        функция delay нужна, что бы создать задержку перед поднятием предмета 
+        функция Delay() нужна, что бы создать задержку перед поднятием предмета 
     */
 
 
@@ -24,13 +44,8 @@ public class Item : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().CanAdd())
-            {
-                cour = delay();
-                StartCoroutine(cour);
-                Debug.Log("CoroutineStarted");
-            }
-            
+            canPick = true;
+            StartCoroutine(Delay());
         }
     }
 
@@ -38,22 +53,16 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (cour != null)
-            {
-                StopCoroutine(cour);
-            }
-            
-            Debug.Log("CoroutineStoped");
+            canPick = false;
         }
-    }
+    }    
 
-
-    private IEnumerator delay()
+    private IEnumerator Delay()
     {
         yield return new WaitForSeconds(1);
-        if (GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().CanAdd())
+        if (inventory.CanAdd() && canPick)
         {
-            GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().AddItem(ID);
+            inventory.AddItem(ID);
             Destroy(gameObject);
         }
     }

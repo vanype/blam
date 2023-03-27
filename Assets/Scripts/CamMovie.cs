@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CamMovie : MonoBehaviour
 {
+    [SerializeField] private bool searchInStart;
     private Transform player;
-    public bool searchInStart;
-   
-    void Start()
+
+    private void Start()
     {
         if (searchInStart)
         {
@@ -21,7 +21,7 @@ public class CamMovie : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Vector3 transformPlayer = new Vector3(0, 0, -10) + player.position;
         transform.position = Vector3.Lerp(transform.position, transformPlayer, 4f * Time.deltaTime);
